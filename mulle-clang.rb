@@ -3,7 +3,6 @@ class MulleClang < Formula
    desc "Objective-C compiler for the mulle-objc runtime"
    url "https://github.com/Codeon-GmbH/mulle-clang/tarball/3.9.0"
    version "3.9.0"
-   keg_only "The mulle-clang link is installed hackishly, due to homebrew limitations"
    sha256 "40b79b3d98cb1110edd5032961b04ffc5ff3170de7aa073e451ba10dfb5ed02f"
 
 # use brew install --build-bottle ./mulle-clang.rb
@@ -23,6 +22,7 @@ class MulleClang < Formula
    def install
       mkdir "build" do
          args = std_cmake_args
+         args << "-DCMAKE_INSTALL_PREFIX=#{prefix}/root"
          args << "-DLINK_POLLY_INTO_TOOLS=ON"
          args << "-DCMAKE_EXE_LINKER_FLAGS=-lPolly -lPollyISL"
          args << ".."
@@ -30,8 +30,8 @@ class MulleClang < Formula
          system "cmake", "-G", "Unix Makefiles", *args
          system "make", "-j", "4"
          system "make install"
-         # make link manually
-         system "ln", "-sf" , "#{prefix}/bin/clang", "mulle-clang"
+
+         bin.install_symlink prefix/"root/bin/clang" => "mulle-clang"
       end
    end
 end
