@@ -5,13 +5,13 @@ class MulleClang < Formula
    version "3.9.0"
    sha256 "40b79b3d98cb1110edd5032961b04ffc5ff3170de7aa073e451ba10dfb5ed02f"
 
+# produced executable too large for a bottle
 # use brew install --build-bottle ./mulle-clang.rb
-#  bottle do
-#    cellar :any_skip_relocation
-#    sha256 "4d68bd49d9d837144da9921ee28a61419ec306035c2a127af1df8961a1e9d1db" => :el_capitan
-#    sha256 "ce8d399f32942a3414c9f1d142a647f14fabc8d043c603ebba8bba20478bce2d" => :yosemite
-#    sha256 "69e3bc7fec832ea0976179f2723905efbe351ba4f36c9e15f144ba61b4f008e4" => :mavericks
-#  end
+#   bottle do
+#      cellar :any_skip_relocation
+#      root_url "https://github.com/Codeon-GmbH/homebrew-bottles"
+#      sha256 "db9e697da2bc9a3dec68dc5bea5c8a51b8b3cdf5ed2d00386a8f3ce3514cee3b" => :yosemite
+#   end
 
    # actually depends on llvm39, but versioning is tricky in homebrew
    # probably need to change PATH below too, when llvm moves to 40
