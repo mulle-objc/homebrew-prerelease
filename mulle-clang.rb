@@ -1,9 +1,9 @@
 class MulleClang < Formula
    homepage "https://github.com/Codeon-GmbH/mulle-clang"
    desc "Objective-C compiler for the mulle-objc runtime"
-   url "https://github.com/Codeon-GmbH/mulle-clang/tarball/3.9"
-   version "3.9"
-   keg_only "The mulle-clang link is installed hackishl, due to homebrew limitations"
+   url "https://github.com/Codeon-GmbH/mulle-clang/tarball/3.9.0"
+   version "3.9.0"
+   keg_only "The mulle-clang link is installed hackishly, due to homebrew limitations"
    sha256 "40b79b3d98cb1110edd5032961b04ffc5ff3170de7aa073e451ba10dfb5ed02f"
 
 # use brew install --build-bottle ./mulle-clang.rb
