@@ -9,7 +9,7 @@ You need to install [brew](//brew.sh) or [linuxbrew](//linuxbrew.sh) first,
 then open a Terminal and type.
 
 ~~~
-brew tap Codeon-GmbH/software
+brew tap codeon-gmbh/software
 ~~~
 
 
