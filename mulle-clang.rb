@@ -1,9 +1,9 @@
 class MulleClang < Formula
    homepage "https://github.com/Codeon-GmbH/mulle-clang"
    desc "Objective-C compiler for the mulle-objc runtime"
-   url "https://github.com/Codeon-GmbH/mulle-clang/tarball/3.9.0"
-   version "3.9.0"
-   sha256 "40b79b3d98cb1110edd5032961b04ffc5ff3170de7aa073e451ba10dfb5ed02f"
+   url "https://github.com/Codeon-GmbH/mulle-clang/tarball/3.9.0.1"
+   version "3.9.0.1"
+   sha256 "a59bf02dbb6810ea546e9f4cb99adee0a271b58954a1ed825a393d411a719bf1"
 
 # produced executable too large for a bottle
 # use brew install --build-bottle ./mulle-clang.rb
@@ -19,6 +19,10 @@ class MulleClang < Formula
    depends_on 'llvm'  => :build
    depends_on 'cmake' => :build
 
+   #
+   # homebrew llvm is built with polly, but cmake doesn't pick it up
+   # for some reason
+   #
    def install
       mkdir "build" do
          args = std_cmake_args
@@ -33,5 +37,9 @@ class MulleClang < Formula
 
          bin.install_symlink prefix/"root/bin/clang" => "mulle-clang"
       end
+   end
+
+   test do
+      system "mulle-clang", "--help", "|", "fgrep", "-x", "-s", "fobjc-aam"
    end
 end
