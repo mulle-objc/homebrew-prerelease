@@ -7,9 +7,8 @@ class MulleClang < Formula
 
 # use brew install --build-bottle mulle-clang
    bottle do
-#      cellar :any_skip_relocation
-#      root_url "https://github.com/Codeon-GmbH/homebrew-bottles"
-      root_url "https://github.com/codeon-gmbh"
+#    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
+      root_url "https://github.com/codeon-gmbh/homebrew-bottles"
       sha256 "70fc6b1ca9151f746635101e62df1b493fda91fafa40ff8fa7291b06ceb92a57" => :yosemite
    end
 
