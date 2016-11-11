@@ -26,17 +26,6 @@ class MulleClang < Formula
    #
    def install
       mkdir "build" do
-         #
-         # install a shim for mulle-lang into homebrew
-         #
-         shimdir = ENV["HOMEBREW_LIBRARY"] + "/Homebrew/shims/super"
-         src     = shimdir + "/cc"
-         dst     = shimdir + "/mulle-clang"
-
-         text = File.read( src)
-         text = text.gsub( /\/\^clang\//, "/clang/")
-         File.open( dst, "w") {|file| file.puts text }
-
          args = std_cmake_args
          args << "-DCMAKE_INSTALL_PREFIX=#{prefix}/root"
          args << "-DLINK_POLLY_INTO_TOOLS=ON"
@@ -48,6 +37,18 @@ class MulleClang < Formula
          system "make install"
 
          bin.install_symlink prefix/"root/bin/clang" => "mulle-clang"
+
+         #
+         # install a shim for mulle-lang into homebrew
+         #
+         shimdir = ENV["HOMEBREW_LIBRARY"] + "/Homebrew/shims/super"
+         src     = shimdir + "/cc"
+         dst     = shimdir + "/mulle-clang"
+
+         text = File.read( src)
+         text = text.gsub( /\/\^clang\//, "/clang/")
+         File.open( dst, "w") {|file| file.puts text }
+         File.chmod(0755, dst)
       end
    end
 
