@@ -9,9 +9,9 @@ class MulleClang < Formula
    bottle do
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
       root_url "https://media.githubusercontent.com/media/Codeon-GmbH/homebrew-bottles/master"
-      sha256 "70fc6b1ca9151f746635101e62df1b493fda91fafa40ff8fa7291b06ceb92a57" => :yosemite
-      sha256 "ee3cdf616b4684c894f72fad0eacae13480f900022bcad5e3b54825304ad4fa9" => :el_capitan
-      sha256 "2846b27dabb4aa8e3ba909b9f4be41accc4905c67ff9d4315857cc3780e49baf" => :sierra
+      rebuild 1
+      sha256 "3488379a7e6751c74b1c8c9dca5a7eb4e893c65fb0fdb0d735b987d7cb1d5f34" => :yosemite
+      sha256 "574d7823f3c60943b9db88c140cdfcae79096199e221969baec934de1aeb5e98" => :sierra
    end
 
    # actually depends on llvm39, but versioning is tricky in homebrew
