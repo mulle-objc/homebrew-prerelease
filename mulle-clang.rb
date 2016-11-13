@@ -11,6 +11,7 @@ class MulleClang < Formula
       root_url "https://media.githubusercontent.com/media/Codeon-GmbH/homebrew-bottles/master"
       rebuild 1
       sha256 "3488379a7e6751c74b1c8c9dca5a7eb4e893c65fb0fdb0d735b987d7cb1d5f34" => :yosemite
+      sha256 "fb599697410cc494377ef5b55d471295c1b5469b86f1acefc663581be601ed87" => :el_capitan
       sha256 "574d7823f3c60943b9db88c140cdfcae79096199e221969baec934de1aeb5e98" => :sierra
    end
 
