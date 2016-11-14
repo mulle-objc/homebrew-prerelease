@@ -18,7 +18,7 @@ class MulleClang < Formula
    # actually depends on llvm39, but versioning is tricky in homebrew
    # probably need to change PATH below too, when llvm moves to 40
 
-   depends_on 'llvm'  => "with-libcxx" :build
+   depends_on 'llvm'  => [ "with-libcxx", :build ]
    depends_on 'cmake' => :build
 
    #
