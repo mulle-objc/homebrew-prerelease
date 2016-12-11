@@ -5,15 +5,17 @@ class MulleClang < Formula
    sha256 "c53a6a73cc182349ae3b687840033cbfd5c4843d6ac9f89f420ece5627cb9e08"
 #   sha256 "a59bf02dbb6810ea546e9f4cb99adee0a271b58954a1ed825a393d411a719bf1"
 
-# use brew install --build-bottle mulle-clang
+# MEMO: Create a bottle with
+#    brew install --build-bottle mulle-clang ; brew bottle mulle-clang
+#
 #   bottle do
+  bottle do
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
-#      root_url "http://download.codeon.de/bottles"
-#      rebuild 1
-#      cellar :any
-#      sha256 "3488379a7e6751c74b1c8c9dca5a7eb4e893c65fb0fdb0d735b987d7cb1d5f34" => :yosemite
-#      sha256 "fb599697410cc494377ef5b55d471295c1b5469b86f1acefc663581be601ed87" => :el_capitan
-#      sha256 "574d7823f3c60943b9db88c140cdfcae79096199e221969baec934de1aeb5e98" => :sierra
+    root_url "http://download.codeon.de/bottles"
+    cellar :any
+    sha256 "6cdfbc28ad3baeea67572f132305a517e9aa4d544dc06373478ff4aa266903ef" => :yosemite
+    sha256 "3d1d1b0dc1e95353c80582ea75ea8c9d5b997ba193b6631abfb2560797fc4361" => :sierra
+  end
 #   end
 
    # actually depends on llvm39, but versioning is tricky in homebrew
