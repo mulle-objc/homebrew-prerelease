@@ -8,15 +8,14 @@ class MulleClang < Formula
 # MEMO: Create a bottle with
 #    brew install --build-bottle mulle-clang ; brew bottle mulle-clang
 #
-#   bottle do
   bottle do
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
     root_url "http://download.codeon.de/bottles"
     cellar :any
     sha256 "6cdfbc28ad3baeea67572f132305a517e9aa4d544dc06373478ff4aa266903ef" => :yosemite
+    sha256 "bc9786d1e4c54c96e838b1a51f3ee20606364068b600ee3e3145bfc7d8f5b80a" => :el_capitan
     sha256 "3d1d1b0dc1e95353c80582ea75ea8c9d5b997ba193b6631abfb2560797fc4361" => :sierra
   end
-#   end
 
    # actually depends on llvm39, but versioning is tricky in homebrew
    # probably need to change PATH below too, when llvm moves to 40
