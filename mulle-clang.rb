@@ -30,6 +30,9 @@ class MulleClang < Formula
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
     root_url "http://download.codeon.de/bottles"
     cellar :any
+    sha256 "4511bb93588e6f90bfe44272a3fec03e1d1dcb46e3ddcd79ac0d8197c9c1b6a6" => :yosemite
+    sha256 "08bc66209d3860d49b9e716189e3e2250ff3e04363b3d3679de8f31b0ce0d955" => :sierra
+    sha256 "240fbf54838f7b3c92afe33ec8ef199581d93be7a70e4176ee0ca585792e4f1c" => :el_capitan
   end
 
    # actually depends on llvm39, but versioning is tricky in homebrew
