@@ -1,20 +1,35 @@
 class MulleClang < Formula
    homepage "https://github.com/Codeon-GmbH/mulle-clang"
    desc "Objective-C compiler for the mulle-objc runtime"
-   url "https://github.com/Codeon-GmbH/mulle-clang/archive/3.9.0.2.tar.gz"
-   sha256 "c53a6a73cc182349ae3b687840033cbfd5c4843d6ac9f89f420ece5627cb9e08"
+#
+# MEMO:
+#
+#    1. Create a release on github
+#    2. Download the tar.gz file from github like so
+#       `curl -O -L "https://github.com/Codeon-GmbH/mulle-clang/archive/4.0.0.0.tar.gz"`
+#    3. Run shasum over it `shasum -a 256 -b 4.0.0.0.tar.gz`
+#    4. Remove bottle urls
+#
+   url "https://github.com/Codeon-GmbH/mulle-clang/archive/4.0.0.0.tar.gz"
+   sha256 "97d4e00e6cf4c9a74bd367dbe432ecde4c3c19e1219f7a0ae410e33e8a8c83ac"
 #   sha256 "a59bf02dbb6810ea546e9f4cb99adee0a271b58954a1ed825a393d411a719bf1"
 
-# MEMO: Create a bottle with
-#    brew install --build-bottle mulle-clang ; brew bottle mulle-clang
 #
+# MEMO:
+#    For each OS X version, create bottles with:
+#
+#    `brew uninstall mulle-clang`
+#    `brew install --build-bottle mulle-clang`
+#    `brew bottle mulle-clang`
+#
+#     Unfortnuately the formula must be iteratively pushed
+#     building from a local recipe with file:/// doesn't work
+#
+
   bottle do
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
     root_url "http://download.codeon.de/bottles"
     cellar :any
-    sha256 "6cdfbc28ad3baeea67572f132305a517e9aa4d544dc06373478ff4aa266903ef" => :yosemite
-    sha256 "bc9786d1e4c54c96e838b1a51f3ee20606364068b600ee3e3145bfc7d8f5b80a" => :el_capitan
-    sha256 "3d1d1b0dc1e95353c80582ea75ea8c9d5b997ba193b6631abfb2560797fc4361" => :sierra
   end
 
    # actually depends on llvm39, but versioning is tricky in homebrew
@@ -42,7 +57,7 @@ class MulleClang < Formula
          bin.install_symlink prefix/"root/bin/clang" => "mulle-clang"
 
          #
-         # install a shim for mulle-lang into homebrew
+         # install a shim for mulle-clang into homebrew
          #
          shimdir = ENV["HOMEBREW_LIBRARY"] + "/Homebrew/shims/super"
          src     = shimdir + "/cc"
