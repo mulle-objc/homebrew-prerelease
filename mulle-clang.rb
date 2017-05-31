@@ -6,12 +6,12 @@ class MulleClang < Formula
 #
 #    1. Create a release on github
 #    2. Download the tar.gz file from github like so
-#       `curl -O -L "https://github.com/Codeon-GmbH/mulle-clang/archive/4.0.0.0.tar.gz"`
-#    3. Run shasum over it `shasum -a 256 -b 4.0.0.0.tar.gz`
+#       `curl -O -L "https://github.com/Codeon-GmbH/mulle-clang/archive/4.0.0.4.tar.gz"`
+#    3. Run shasum over it `shasum -a 256 -b 4.0.0.4.tar.gz`
 #    4. Remove bottle urls
 #
-   url "https://github.com/Codeon-GmbH/mulle-clang/archive/4.0.0.0.tar.gz"
-   sha256 "97d4e00e6cf4c9a74bd367dbe432ecde4c3c19e1219f7a0ae410e33e8a8c83ac"
+   url "https://github.com/Codeon-GmbH/mulle-clang/archive/4.0.0.4.tar.gz"
+   sha256 "135ac25be678afe1927dbb3b65fd6be6edb5a811c5291836423cc24bd6c703a6"
 #   sha256 "a59bf02dbb6810ea546e9f4cb99adee0a271b58954a1ed825a393d411a719bf1"
 
 #
@@ -30,9 +30,6 @@ class MulleClang < Formula
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
     root_url "http://download.codeon.de/bottles"
     cellar :any
-    sha256 "4511bb93588e6f90bfe44272a3fec03e1d1dcb46e3ddcd79ac0d8197c9c1b6a6" => :yosemite
-    sha256 "08bc66209d3860d49b9e716189e3e2250ff3e04363b3d3679de8f31b0ce0d955" => :sierra
-    sha256 "240fbf54838f7b3c92afe33ec8ef199581d93be7a70e4176ee0ca585792e4f1c" => :el_capitan
   end
 
    # actually depends on llvm39, but versioning is tricky in homebrew
