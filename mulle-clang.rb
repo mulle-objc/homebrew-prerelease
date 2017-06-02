@@ -29,6 +29,7 @@ class MulleClang < Formula
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
     root_url "http://download.codeon.de/bottles"
     sha256 "a41d43786789cb206d5b42a3c942d0bb5db373dbc8b31760f8e768ab4236f20c" => :yosemite
+    sha256 "9a5d0889a9cc329a0cf065ff107e03fe82ce4f0e99627004b468ed190b4eac3c" => :el_capitan
     sha256 "8db93d220d0b0d3848ca3ff30666100213d1b3c24c4ab953d477388cb91afc4c" => :sierra
     cellar :any
   end
@@ -36,7 +37,7 @@ class MulleClang < Formula
    # actually depends on llvm39, but versioning is tricky in homebrew
    # probably need to change PATH below too, when llvm moves to 40
 
-   depends_on 'llvm'  => :build
+   depends_on 'llvm@4'  => :build
    depends_on 'cmake' => :build
 
    #
