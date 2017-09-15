@@ -17,9 +17,9 @@ class MulleClang < Formula
 # MEMO:
 #    For each OS X version, create bottles with:
 #
-#    `brew uninstall mulle-clang`
-#    `brew install --build-bottle mulle-clang`
-#    `brew bottle mulle-clang`
+#    `brew uninstall codeon-gmbh/software/mulle-clangg`
+#    `brew install --build-bottle codeon-gmbh/software/mulle-clang`
+#    `brew bottle codeon-gmbh/software/mulle-clang`
 #
 #     Unfortunately building from a local recipe with file:/// doesn't work
 #
@@ -44,6 +44,23 @@ class MulleClang < Formula
    # for some reason
    #
    def install
+      shimdir = ENV["HOMEBREW_LIBRARY"] + "/Homebrew/shims/super"
+      src     = shimdir + "/cc"
+      dst     = shimdir + "/mulle-clang"
+
+      # check this now, before bailing in 15 min
+      if ! File.directory?( shimdir)
+        raise StandardError, "Unable to find homebrew shimdir " + shimdir
+      end
+
+      if ! File.writable?( shimdir)
+        raise StandardError, "Shimdir is not writable " + shimdir
+      end
+
+      if ! File.writable?( dst)
+        raise StandardError, "Unable to write homebrew shim " + dst
+      end
+
       mkdir "build" do
          args = std_cmake_args
          args << "-DCMAKE_INSTALL_PREFIX=#{prefix}/root"
@@ -57,13 +74,11 @@ class MulleClang < Formula
 
          bin.install_symlink prefix/"root/bin/clang" => "mulle-clang"
 
-         #
-         # install a shim for mulle-clang into homebrew
-         #
-         shimdir = ENV["HOMEBREW_LIBRARY"] + "/Homebrew/shims/super"
-         src     = shimdir + "/cc"
-         dst     = shimdir + "/mulle-clang"
 
+         #
+         # install the shim for mulle-clang into homebrew
+         # copy an existing ship and modify it
+         #
          text = File.read( src)
          text = text.gsub( /\/\^clang\//, "/clang/")
          File.open( dst, "w") {|file| file.puts text }
