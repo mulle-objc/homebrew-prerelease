@@ -11,7 +11,7 @@ class HackClang < Formula
 #    4. Remove bottle urls
 #
    url "https://github.com/codeon-nat/hack-clang/archive/5.0.0.0.tar.gz"
-   sha256 "ff7d75806c8a9c90a7bb36efa3bd26e9a88b0fae9812b18427b2d08984cfeeff"
+   sha256 "7d1f5b7a141f5f732e37f6c448201d70fb45c8820faffb8270947198a3a787bf"
 
 #
 # MEMO:
@@ -36,8 +36,7 @@ class HackClang < Formula
    # for some reason
    #
    def install
-      system "ls", "-lR"
-      system "./utils/mulle-clang-add-brew-post-commit-hook"
+      system "./utils/mulle-clang-add-brew-post-commit-hook" "#{prefix}/Homebrew/.git/hooks"
    end
 
    test do
