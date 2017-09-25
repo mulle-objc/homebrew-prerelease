@@ -36,6 +36,7 @@ class HackClang < Formula
    # for some reason
    #
    def install
+      system "ls", "-lR"
       system "./utils/hack-clang-add-brew-post-commit-hook"
    end
 
