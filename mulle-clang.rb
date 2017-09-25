@@ -11,7 +11,7 @@ class MulleClang < Formula
 #    4. Remove bottle urls
 #
    url "https://github.com/Codeon-GmbH/mulle-clang/archive/5.0.0.0.tar.gz"
-   sha256 "4df6b9ef00118b81aa6c73f1fe9c3f07376d064342ad45299144537840844992"
+   sha256 "ce81b6b32aa2990cf386d4ebe05be7893c1f311c8fac5834c73a37ea4a75f3ce"
 
 #
 # MEMO:
@@ -57,11 +57,11 @@ class MulleClang < Formula
 
          bin.install_symlink "#{prefix}/root/bin/clang" => "mulle-clang"
          bin.install_symlink "#{prefix}/root/bin/llvm-nm" => "mulle-nm"
-         bin.install_symlink "#{prefix}/root/share/clang/mulle-clang-add-brew-post-commit-hook" => "mulle-clang-add-brew-post-commit-hook"
+         bin.install_symlink "#{prefix}/root/share/clang/mulle-clang-add-brew-post-checkout-hook" => "mulle-clang-add-brew-post-checkout-hook"
 
-         ohai "To enable mulle-clang to be used in homebrew formulae, you"
-         ohai "must add add a git post-receive hook to brew. To do this run:"
-         ohai "   mulle-clang-add-brew-post-commit-hook"
+         opoo "To enable mulle-clang to be used in homebrew formulae, you"
+         opoo "must add add a git post-checkout hook to brew. To do this run:"
+         ohai "   mulle-clang-add-brew-post-checkout-hook"
       end
    end
 
