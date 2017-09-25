@@ -17,7 +17,7 @@ class MulleClang < Formula
 # MEMO:
 #    For each OS X version, create bottles with:
 #
-#    `brew uninstall codeon-gmbh/software/mulle-clangg`
+#    `brew uninstall codeon-gmbh/software/mulle-clang`
 #    `brew install --build-bottle codeon-gmbh/software/mulle-clang`
 #    `brew bottle codeon-gmbh/software/mulle-clang`
 #
@@ -38,29 +38,13 @@ class MulleClang < Formula
 
    depends_on 'llvm@5'  => :build
    depends_on 'cmake'   => :build
+   depends_on 'ninja'   => :build
 
    #
    # homebrew llvm is built with polly, but cmake doesn't pick it up
    # for some reason
    #
    def install
-      shimdir = ENV["HOMEBREW_LIBRARY"] + "/Homebrew/shims/super"
-      src     = shimdir + "/cc"
-      dst     = shimdir + "/mulle-clang"
-
-      # check this now, before bailing in 15 min
-      if ! File.directory?( shimdir)
-        raise StandardError, "Unable to find homebrew shimdir " + shimdir
-      end
-
-      if ! File.writable?( shimdir)
-        raise StandardError, "Shimdir is not writable " + shimdir
-      end
-
-      if ! File.writable?( dst)
-        raise StandardError, "Unable to write homebrew shim " + dst
-      end
-
       mkdir "build" do
          args = std_cmake_args
          args << "-DCMAKE_INSTALL_PREFIX=#{prefix}/root"
@@ -68,21 +52,16 @@ class MulleClang < Formula
          args << "-DCMAKE_EXE_LINKER_FLAGS=-lPolly -lPollyISL"
          args << ".."
          ENV["PATH"] = "/usr/local/opt/llvm/bin" + File::PATH_SEPARATOR + ENV["PATH"]
-         system "cmake", "-G", "Unix Makefiles", *args
-         system "make", ENV[ "MAKEFLAGS"]
-         system "make install"
+         system "cmake", "-G", "Ninja", *args
+         system "ninja", "install"
 
-         bin.install_symlink prefix/"root/bin/clang" => "mulle-clang"
+         bin.install_symlink "#{prefix}/root/bin/clang" => "mulle-clang"
+         bin.install_symlink "#{prefix}/root/bin/llvm-nm" => "mulle-nm"
+         bin.install_symlink "#{prefix}/root/share/clang/mulle-clang-add-brew-post-commit-hook" => "mulle-clang-add-brew-post-commit-hook"
 
-
-         #
-         # install the shim for mulle-clang into homebrew
-         # copy an existing ship and modify it
-         #
-         text = File.read( src)
-         text = text.gsub( /\/\^clang\//, "/clang/")
-         File.open( dst, "w") {|file| file.puts text }
-         File.chmod(0755, dst)
+         ohai "To enable mulle-clang to be used in homebrew formulae, you"
+         ohai "must add add a git post-receive hook to brew. To do this run:"
+         ohai "   mulle-clang-add-brew-post-commit-hook"
       end
    end
 
