@@ -36,6 +36,10 @@ class HackClang < Formula
    # for some reason
    #
    def install
+      system "ls", "-ld", "#{HOMEBREW_PREFIX}"
+      system "ls", "-ld", "#{HOMEBREW_PREFIX}/Homebrew"
+      system "ls", "-ld", "#{HOMEBREW_PREFIX}/Homebrew/.git"
+      system "ls", "-ld", "#{HOMEBREW_PREFIX}/Homebrew/.git/hooks"
       system "./utils/mulle-clang-add-brew-post-commit-hook", "#{HOMEBREW_PREFIX}/Homebrew/.git/hooks"
    end
 
