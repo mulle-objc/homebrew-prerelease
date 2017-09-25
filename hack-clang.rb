@@ -36,7 +36,7 @@ class HackClang < Formula
    # for some reason
    #
    def install
-      system "#{prefix}/root/share/clang/hack-clang-add-brew-post-commit-hook"
+      system "./utils/hack-clang-add-brew-post-commit-hook"
    end
 
    test do
