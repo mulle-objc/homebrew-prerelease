@@ -11,7 +11,7 @@ class HackClang < Formula
 #    4. Remove bottle urls
 #
    url "https://github.com/codeon-nat/hack-clang/archive/5.0.0.0.tar.gz"
-   sha256 "875e5385e073a48ac790d4e5ec3356f8980bb9bba29cc620c9aef5fa5aaf8aa7"
+   sha256 "ff7d75806c8a9c90a7bb36efa3bd26e9a88b0fae9812b18427b2d08984cfeeff"
 
 #
 # MEMO:
