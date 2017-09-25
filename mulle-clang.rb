@@ -29,7 +29,7 @@ class MulleClang < Formula
     root_url "http://download.codeon.de/bottles"
 #    sha256 "a41d43786789cb206d5b42a3c942d0bb5db373dbc8b31760f8e768ab4236f20c" => :yosemite
 #    sha256 "9a5d0889a9cc329a0cf065ff107e03fe82ce4f0e99627004b468ed190b4eac3c" => :el_capitan
-#    sha256 "8db93d220d0b0d3848ca3ff30666100213d1b3c24c4ab953d477388cb91afc4c" => :sierra
+#    sha256 "e9ad877dec81eba2e4b73a23a3e0b9d81ad16c28ec5da3c3abf45672d1eda923" => :sierra
     cellar :any
   end
 
@@ -56,12 +56,12 @@ class MulleClang < Formula
          system "ninja", "install"
 
          bin.install_symlink "#{prefix}/root/bin/clang" => "mulle-clang"
-         bin.install_symlink "#{prefix}/root/bin/llvm-nm" => "mulle-nm"
+         bin.install_symlink "#{prefix}/root/bin/scan-build" => "mulle-scan-build"
          bin.install_symlink "#{prefix}/root/share/clang/mulle-clang-add-brew-post-checkout-hook" => "mulle-clang-add-brew-post-checkout-hook"
 
          opoo "To enable mulle-clang to be used in homebrew formulae, you"
          opoo "must add add a git post-checkout hook to brew. To do this run:"
-         ohai "   mulle-clang-add-brew-post-checkout-hook"
+         opoo "   mulle-clang-add-brew-post-checkout-hook"
       end
    end
 
