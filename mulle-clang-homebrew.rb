@@ -9,7 +9,7 @@ class MulleClangHomebrew < Formula
    # for some reason
    #
    def install
-      shimdir = ENV["HOMEBREW_LIBRARY"] + "/Homebrew/shims/super"
+      shimdir = ENV[ "HOMEBREW_LIBRARY"] + "/Homebrew/shims/super"
       src     = shimdir + "/cc"
       dst     = "#{prefix}/bin/mulle-clang"
 
@@ -17,8 +17,12 @@ class MulleClangHomebrew < Formula
         raise StandardError, "Unable to find homebrew shimdir " + shimdir
       end
 
-      if ! File.readable?( shimdir)
-        raise StandardError, "Unable to find homebrew shim cc in " + shimdir
+      if ! File.readable?( src)
+        raise StandardError, "Unable to find homebrew shim cc in shimdir " + shimdir
+      end
+
+      if ! File.directory?( "#{prefix}/bin")
+         Dir.mkdir( "#{prefix}/bin", 0755)
       end
 
       if ! File.writable?( dst)
