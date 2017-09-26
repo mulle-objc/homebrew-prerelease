@@ -28,8 +28,8 @@ class MulleClang < Formula
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
     root_url "http://download.codeon.de/bottles"
 #    sha256 "a41d43786789cb206d5b42a3c942d0bb5db373dbc8b31760f8e768ab4236f20c" => :yosemite
-#    sha256 "9a5d0889a9cc329a0cf065ff107e03fe82ce4f0e99627004b468ed190b4eac3c" => :el_capitan
-#    sha256 "e9ad877dec81eba2e4b73a23a3e0b9d81ad16c28ec5da3c3abf45672d1eda923" => :sierra
+    sha256 "5f5aad6f45f242e6f8fe5dd1d1122f8855e122e2b56dafff69af451364d04c29" => :el_capitan
+    sha256 "c0f6e19a618a569f8ab9000b2857cb7bd43f6f4df300b6ff19886618a36966d8" => :sierra
     cellar :any
   end
 
