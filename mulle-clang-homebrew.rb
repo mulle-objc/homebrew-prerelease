@@ -28,10 +28,6 @@ class MulleClangHomebrew < Formula
          Dir.mkdir( "#{prefix}/bin", 0755)
       end
 
-      if ! File.writable?( dst)
-        raise StandardError, "Unable to write homebrew shim " + dst
-      end
-
       text = File.read( src)
       text = text.gsub( /\/\^clang\//, "/clang/")
       File.open( dst, "w") {|file| file.puts text }
