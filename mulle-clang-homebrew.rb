@@ -32,11 +32,10 @@ class MulleClangHomebrew < Formula
         raise StandardError, "Unable to write homebrew shim " + dst
       end
 
-         text = File.read( src)
-         text = text.gsub( /\/\^clang\//, "/clang/")
-         File.open( dst, "w") {|file| file.puts text }
-         File.chmod( 0755, dst)
-      end
+      text = File.read( src)
+      text = text.gsub( /\/\^clang\//, "/clang/")
+      File.open( dst, "w") {|file| file.puts text }
+      File.chmod( 0755, dst)
    end
 
    test do
