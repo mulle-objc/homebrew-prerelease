@@ -5,12 +5,9 @@ class MulleClangHomebrewTest < Formula
    url "https://github.com/Codeon-GmbH/mulle-clang-homebrew-test/archive/0.0.1.tar.gz"
    sha256 "daf9678fd6a484abc61ca028116ddcb6aa75c3d27a2b207266de49cc5b3faeb3"
 
-   depends_on 'mulle-clang-homebrew'   => :build
+   depends_on 'mulle-clang-homebrew' => :build
+   depends_on 'mulle-clang' => :build
 
-   #
-   # homebrew llvm is built with polly, but cmake doesn't pick it up
-   # for some reason
-   #
    def install
       ohai "PATH is " + ENV[ "PATH"]
    end
