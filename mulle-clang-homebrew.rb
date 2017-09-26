@@ -4,6 +4,9 @@ class MulleClangHomebrew < Formula
 
    depends_on 'mulle-clang'   => :build
 
+   url "https://github.com/Codeon-GmbH/mulle-clang-homebrew/archive/0.0.1.tar.gz"
+   sha256 "2e9364a8606dce0f9697aa368660648185153fb6a10ab3b2e2cfc02908005168"
+
    #
    # homebrew llvm is built with polly, but cmake doesn't pick it up
    # for some reason
