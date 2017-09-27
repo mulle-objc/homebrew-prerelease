@@ -4,7 +4,7 @@ class MulleClangHomebrew < Formula
 
   depends_on 'mulle-clang' => :build
 
-  keg_only "This shim is only used to be used inside a brew formula"
+  keg_only "this shim is only used inside a brew formula."
 
   url "https://github.com/Codeon-GmbH/mulle-clang-homebrew/archive/0.0.1.tar.gz"
   sha256 "2e9364a8606dce0f9697aa368660648185153fb6a10ab3b2e2cfc02908005168"
