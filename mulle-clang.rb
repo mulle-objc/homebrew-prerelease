@@ -64,10 +64,9 @@ class MulleClang < Formula
 
   def caveats
     str = <<-EOS.undent
-    To build homebrew packages with mulle-clang, you need to add the following
-    lines to your formula:
-       depends_on 'mulle-clang-homebrew' => :build
-       depends_on 'mulle-clang' => :build
+    To use mulle-clang inside homebrew formulae, you need a shim.
+    See:
+       https://github.com/Codeon-GmbH/mulle-clang-homebrew
     EOS
     str
   end

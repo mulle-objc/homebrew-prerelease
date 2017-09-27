@@ -3,29 +3,20 @@
 This is a tap for Codeon [homebrew](//brew.sh) formulae.
 
 
-### How to access this repository
-
-You need to install [brew](//brew.sh) or [linuxbrew](//linuxbrew.sh) first,
-then open a Terminal and type.
-
-~~~
-brew tap codeon-gmbh/software
-~~~
-
-
 ### How to install a tool
 
-Pick a tool name and say `brew install <name>`.
+Pick a tool name and say `brew install codeon-gmbh/software/<name>`.
 
-Example:
+Example: To install mulle-clang use:
 
 ~~~
-brew install mulle-clang
+brew install codeon-gmbh/software/mulle-clang
 ~~~
 
 
 ### List of tools: Linux, OS X
 
-Name             | Description    | Homepage
------------------|----------------|-------------
-mulle-clang      | Objective-C compiler for **mulle-objc**.  | [[homepage](https://www.mulle-kybernetik.com/mulle-objc)]
+Name                    | Description                               | Homepage
+------------------------|-------------------------------------------|-------------
+mulle-clang             | Objective-C compiler for **mulle-objc**.  | [[homepage](https://www.mulle-kybernetik.com/mulle-objc)]
+mulle-clang-homebrew    | Shim to use mulle-clang inside homebrew formulas |
