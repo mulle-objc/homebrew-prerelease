@@ -16,7 +16,8 @@ brew install codeon-gmbh/software/mulle-clang
 
 ### List of tools: Linux, OS X
 
-Name                    | Description                               | Homepage
+Name                    | Description                               | Project
 ------------------------|-------------------------------------------|-------------
-mulle-clang             | Objective-C compiler for **mulle-objc**.  | [[homepage](https://www.mulle-kybernetik.com/mulle-objc)]
-mulle-clang-homebrew    | Shim to use mulle-clang inside homebrew formulas |
+mulle-clang             | Objective-C compiler for **mulle-objc**.  | [[github](https://github.com/codeon-gmbh/mulle-objc)]
+mulle-clang-homebrew    | Shim to use mulle-clang inside homebrew formulas | [[github](https://github.com/codeon-gmbh/mulle-clang-homebrew)
+mulle-lldb              | Debugger for **mulle-objc**.              | [[github](https://github.com/codeon-gmbh/mulle-lldb)]
