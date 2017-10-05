@@ -25,6 +25,13 @@ class MulleLldb < Formula
     "mulle-clang 5.0.0.1 (runtime-load-version: 12)"
   end
 
+  bottle do
+    root_url "http://download.codeon.de/bottles"
+    sha256 "ab4c3a7b1dd8cb373722775a5fa4dd42175c7b3b3153d1748ead87bc2560f453" => :high_sierra
+    sha256 "1eb6ad32b2477b3e36a9687a85d43e97bb6756ecdedb7a4536bd2a05d9704137" => :sierra
+    cellar :any
+  end
+
   stable do
     url "https://releases.llvm.org/5.0.0/llvm-5.0.0.src.tar.xz"
     sha256 "e35dcbae6084adcf4abb32514127c5eabd7d63b733852ccdb31e06f1373136da"
@@ -88,12 +95,6 @@ class MulleLldb < Formula
 #      url "https://releases.llvm.org/5.0.0/polly-5.0.0.src.tar.xz"
 #      sha256 "44694254a2b105cec13ce0560f207e8552e6116c181b8d21bda728559cf67042"
 #    end
-  end
-
-  bottle do
-    sha256 "ab4c3a7b1dd8cb373722775a5fa4dd42175c7b3b3153d1748ead87bc2560f453" => :high_sierra
-    sha256 "1eb6ad32b2477b3e36a9687a85d43e97bb6756ecdedb7a4536bd2a05d9704137" => :sierra
-    cellar :any
   end
 
   head do
