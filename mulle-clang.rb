@@ -11,10 +11,10 @@ class MulleClang < Formula
 #    4. Remove bottle urls
 #
   url "https://github.com/Codeon-GmbH/mulle-clang/archive/5.0.0.1.tar.gz"
-  sha256 "a88db21f9e8e41d6684074bea3c22a3765141aa9b947f11979df04dd228b90f2"
+  sha256 "ca7657cf20d21e613bbfb0f1599bc58f38ad3d6b12c533c2f0b68388201fdab0"
 
   def vendor
-    "mulle-clang 5.0.0.1 (runtime-load-version: 11)"
+    "mulle-clang 5.0.0.1 (runtime-load-version: 12)"
   end
 
 #
@@ -23,20 +23,17 @@ class MulleClang < Formula
 #
 #    `brew uninstall codeon-gmbh/software/mulle-clang`
 #    `brew install --build-bottle --build-from-source mulle-clang.rb`
-#    `brew bottle --force-core-tap --build-from-source mulle-clang.rb
+#    `brew bottle --force-core-tap --build-from-source mulle-clang.rb`
 #
 
   bottle do
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
     root_url "http://download.codeon.de/bottles"
-    sha256 "ace664e414470cfc9c5696a6f94bf829def818cc40167c44fa1fc31571e58196" => :sierra
-#    sha256 "5f5aad6f45f242e6f8fe5dd1d1122f8855e122e2b56dafff69af451364d04c29" => :el_capitan
-#    sha256 "ff8bdba34a3ed7deae363b595f0105fcb75d2651466f491a6d258c20e95b7030" => :high_sierra
+    sha256 "c4212757fa648e70178dbaa6798fde484bfb883fd1f3c9f7b0c40146ade1b32f" => :high_sierra
+    sha256 "89c40f73a0e261f7b3ab63d7106adeb87ac0105dbc2e620072bae721cffa32cf" => :sierra
+    sha256 "cc1055259735f4595e0056008e19a1e40ad9c5ff13a682332575942da86ae59a" => :el_capitan
     cellar :any
   end
-
-   # actually depends on llvm39, but versioning is tricky in homebrew
-   # probably need to change PATH below too, when llvm moves to 40
 
   depends_on 'llvm@5'  => :build
   depends_on 'cmake'   => :build
@@ -47,10 +44,13 @@ class MulleClang < Formula
   # for some reason
   #
   def install
+    if "#{vendor}".empty?
+      raise "vendor is empty"
+    end
 
     mkdir "build" do
       args = std_cmake_args
-      args << "-DCLANG_VENDOR="#{vendor}"
+      args << "-DCLANG_VENDOR=#{vendor}"
       args << "-DCMAKE_INSTALL_PREFIX=#{prefix}/root"
       args << "-DLINK_POLLY_INTO_TOOLS=ON"
       args << "-DCMAKE_EXE_LINKER_FLAGS=-lPolly -lPollyISL"
@@ -73,6 +73,7 @@ class MulleClang < Formula
     EOS
     str
   end
+
   test do
     system "#{bin}/mulle-clang", "--help"
   end
