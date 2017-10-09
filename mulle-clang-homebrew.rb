@@ -29,14 +29,18 @@ class MulleClangHomebrew < Formula
 
     text = File.read( src)
     text = text.gsub( /\/\^clang\//, "/clang/")
+    text = text.gsub( /^( *)ENV\[\"HOMEBREW_CC\"\]( *)$/, "\\1\"mulle-clang\"")
+
     File.open( dst, "w") {|file| file.puts text }
     File.chmod( 0755, dst)
 
-    # also copy xcrun
+    # also copy xcrun, but fix SUPERBIN bug
+
     src = shimdir + "/xcrun"
     dst = "#{prefix}/bin/xcrun"
 
     text = File.read( src)
+    text = text.gsub( /^SUPERBIN=.*/, "SUPERBIN=\"\$\{0\%\/\*}\"")
     File.open( dst, "w") {|file| file.puts text }
     File.chmod( 0755, dst)
   end
