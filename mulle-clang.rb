@@ -10,11 +10,11 @@ class MulleClang < Formula
 #    3. Run shasum over it `shasum -a 256 -b 5.0.0.0.tar.gz`
 #    4. Remove bottle urls
 #
-  url "https://github.com/Codeon-GmbH/mulle-clang/archive/5.0.0.1.tar.gz"
-  sha256 "ca7657cf20d21e613bbfb0f1599bc58f38ad3d6b12c533c2f0b68388201fdab0"
+  url "https://github.com/Codeon-GmbH/mulle-clang/archive/5.0.0.2.tar.gz"
+  sha256 "34f4e90d5d9f634c45cf3ea22db881f419f67e6d8a64b237a102734bf9ff870c"
 
   def vendor
-    "mulle-clang 5.0.0.1 (runtime-load-version: 12)"
+    "mulle-clang 5.0.0.2 (runtime-load-version: 12)"
   end
 
 #
@@ -29,9 +29,9 @@ class MulleClang < Formula
   bottle do
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
     root_url "http://download.codeon.de/bottles"
-    sha256 "c4212757fa648e70178dbaa6798fde484bfb883fd1f3c9f7b0c40146ade1b32f" => :high_sierra
-    sha256 "89c40f73a0e261f7b3ab63d7106adeb87ac0105dbc2e620072bae721cffa32cf" => :sierra
-    sha256 "cc1055259735f4595e0056008e19a1e40ad9c5ff13a682332575942da86ae59a" => :el_capitan
+    sha256 "6ed3ff7fe887e812e5aba0e5dcec8de122c61fb0104d5edfe8641b691a0cfc24" => :high_sierra
+    sha256 "f14750fae74aa642d4ff6a9f82fa142dd70118ff3045236e2a893fd12503f71b" => :sierra
+    sha256 "41554af3f782b819361ce9b270cccaed9b53f1bb282409272a253c859c0b97b7" => :el_capitan
     cellar :any
   end
 
