@@ -6,13 +6,10 @@ class MulleClangHomebrew < Formula
 
   keg_only "this shim is only used inside a brew formula."
 
-  url "https://github.com/Codeon-GmbH/mulle-clang-homebrew/archive/0.0.1.tar.gz"
-  sha256 "2e9364a8606dce0f9697aa368660648185153fb6a10ab3b2e2cfc02908005168"
+  # ther archive is totally bogus and just used for versioning
+  url "https://github.com/Codeon-GmbH/mulle-clang-homebrew/archive/0.0.2.tar.gz"
+  sha256 "1f4b77e8e4621bf14b7c6d23325de6b3b15dd81e84060fa65f8e2f912436c29b"
 
-  #
-  # homebrew llvm is built with polly, but cmake doesn't pick it up
-  # for some reason
-  #
   def install
     shimdir = ENV[ "HOMEBREW_LIBRARY"] + "/Homebrew/shims/super"
     src     = shimdir + "/cc"
@@ -32,6 +29,14 @@ class MulleClangHomebrew < Formula
 
     text = File.read( src)
     text = text.gsub( /\/\^clang\//, "/clang/")
+    File.open( dst, "w") {|file| file.puts text }
+    File.chmod( 0755, dst)
+
+    # also copy xcrun
+    src = shimdir + "/xcrun"
+    dst = "#{prefix}/bin/xcrun"
+
+    text = File.read( src)
     File.open( dst, "w") {|file| file.puts text }
     File.chmod( 0755, dst)
   end
