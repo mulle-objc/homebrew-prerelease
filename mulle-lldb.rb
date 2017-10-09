@@ -22,13 +22,13 @@ class MulleLldb < Formula
   homepage "https://llvm.org/"
 
   def vendor
-    "mulle-clang 5.0.0.1 (runtime-load-version: 12)"
+    "mulle-clang 5.0.0.2 (runtime-load-version: 12)"
   end
 
   bottle do
     root_url "http://download.codeon.de/bottles"
-    sha256 "ab4c3a7b1dd8cb373722775a5fa4dd42175c7b3b3153d1748ead87bc2560f453" => :high_sierra
-    sha256 "1eb6ad32b2477b3e36a9687a85d43e97bb6756ecdedb7a4536bd2a05d9704137" => :sierra
+    sha256 "297c8e1227458b2eb67316a13751a0341f15bac0b2d215460d9d14ea15363183" => :sierra
+    sha256 "5b3ae3849ca95ec85805f8ca768f9ecdbfae1bff713e30477a2b19872ac2605c" => :el_capitan
     cellar :any
   end
 
@@ -37,8 +37,8 @@ class MulleLldb < Formula
     sha256 "e35dcbae6084adcf4abb32514127c5eabd7d63b733852ccdb31e06f1373136da"
 
     resource "clang" do
-      url "https://github.com/Codeon-GmbH/mulle-clang/archive/5.0.0.1.tar.gz"
-      sha256 "ca7657cf20d21e613bbfb0f1599bc58f38ad3d6b12c533c2f0b68388201fdab0"
+      url "https://github.com/Codeon-GmbH/mulle-clang/archive/5.0.0.2.tar.gz"
+      sha256 "34f4e90d5d9f634c45cf3ea22db881f419f67e6d8a64b237a102734bf9ff870c"
     end
 
 #    resource "clang-extra-tools" do
