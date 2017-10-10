@@ -39,6 +39,10 @@ class MulleClangHomebrew < Formula
     src = shimdir + "/xcrun"
     dst = "#{prefix}/bin/xcrun"
 
+    if ! File.readable?( src)
+      raise StandardError, "Unable to find homebrew shim xcrun in shimdir " + shimdir
+    end
+
     text = File.read( src)
     text = text.gsub( /^SUPERBIN=.*/, "SUPERBIN=\"\$\{0\%\/\*}\"")
     File.open( dst, "w") {|file| file.puts text }
