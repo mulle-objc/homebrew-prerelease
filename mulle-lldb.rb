@@ -27,6 +27,7 @@ class MulleLldb < Formula
 
   bottle do
     root_url "http://download.codeon.de/bottles"
+    sha256 "2253534baa1403d77413312bd30ead247e1c53bfceed706e57b087a570ea06e3" => :high_sierra
     sha256 "297c8e1227458b2eb67316a13751a0341f15bac0b2d215460d9d14ea15363183" => :sierra
     sha256 "5b3ae3849ca95ec85805f8ca768f9ecdbfae1bff713e30477a2b19872ac2605c" => :el_capitan
     cellar :any
