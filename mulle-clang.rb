@@ -25,10 +25,13 @@ class MulleClang < Formula
 #    `brew install --build-bottle --build-from-source mulle-clang.rb`
 #    `brew bottle --force-core-tap --build-from-source mulle-clang.rb`
 #
+# Does not work anymore, since bottle --build-from-source is gone :(
 
   bottle do
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
     root_url "http://download.codeon.de/bottles"
+    sha256 "c1ebe03f76051b96bb7d13dc77790818dd08e002ffa8c84df77b90daa4caa8dd" => :high_sierra
+
 #    sha256 "6ed3ff7fe887e812e5aba0e5dcec8de122c61fb0104d5edfe8641b691a0cfc24" => :high_sierra
 #    sha256 "f14750fae74aa642d4ff6a9f82fa142dd70118ff3045236e2a893fd12503f71b" => :sierra
 #    sha256 "41554af3f782b819361ce9b270cccaed9b53f1bb282409272a253c859c0b97b7" => :el_capitan
