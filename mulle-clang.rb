@@ -10,11 +10,11 @@ class MulleClang < Formula
 #    3. Run shasum over it `shasum -a 256 -b 5.0.0.0.tar.gz`
 #    4. Remove bottle urls
 #
-  url "https://github.com/Codeon-GmbH/mulle-clang/archive/5.0.0.2.tar.gz"
-  sha256 "34f4e90d5d9f634c45cf3ea22db881f419f67e6d8a64b237a102734bf9ff870c"
+  url "https://github.com/Codeon-GmbH/mulle-clang/archive/6.0.0.0.tar.gz"
+  sha256 "b5601935b42066b01f3dda9ab9b9750096f95c2f9dd2dcfd67c4a6571785ab64"
 
   def vendor
-    "mulle-clang 5.0.0.2 (runtime-load-version: 12)"
+    "mulle-clang 6.0.0.0 (runtime-load-version: 12)"
   end
 
 #
@@ -29,13 +29,13 @@ class MulleClang < Formula
   bottle do
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
     root_url "http://download.codeon.de/bottles"
-    sha256 "6ed3ff7fe887e812e5aba0e5dcec8de122c61fb0104d5edfe8641b691a0cfc24" => :high_sierra
-    sha256 "f14750fae74aa642d4ff6a9f82fa142dd70118ff3045236e2a893fd12503f71b" => :sierra
-    sha256 "41554af3f782b819361ce9b270cccaed9b53f1bb282409272a253c859c0b97b7" => :el_capitan
+#    sha256 "6ed3ff7fe887e812e5aba0e5dcec8de122c61fb0104d5edfe8641b691a0cfc24" => :high_sierra
+#    sha256 "f14750fae74aa642d4ff6a9f82fa142dd70118ff3045236e2a893fd12503f71b" => :sierra
+#    sha256 "41554af3f782b819361ce9b270cccaed9b53f1bb282409272a253c859c0b97b7" => :el_capitan
     cellar :any
   end
 
-  depends_on 'llvm@5'  => :build
+  depends_on 'llvm@6'  => :build
   depends_on 'cmake'   => :build
   depends_on 'ninja'   => :build
 
@@ -61,12 +61,12 @@ class MulleClang < Formula
 
       bin.install_symlink "#{prefix}/root/bin/clang" => "mulle-clang"
       bin.install_symlink "#{prefix}/root/bin/scan-build" => "mulle-scan-build"
-      bin.install_symlink "#{prefix}/root/share/clang/mulle-clang-add-brew-post-checkout-hook" => "mulle-clang-add-brew-post-checkout-hook"
+      # bin.install_symlink "#{prefix}/root/share/clang/mulle-clang-add-brew-post-checkout-hook" => "mulle-clang-add-brew-post-checkout-hook"
     end
   end
 
   def caveats
-    str = <<-EOS.undent
+    str = <<~EOS
     To use mulle-clang inside homebrew formulae, you need a shim.
     See:
        https://github.com/Codeon-GmbH/mulle-clang-homebrew
