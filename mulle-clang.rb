@@ -10,12 +10,12 @@ class MulleClang < Formula
 #    3. Run shasum over it `shasum -a 256 -b 5.0.0.0.tar.gz`
 #    4. Remove bottle urls
 #
-  url "https://github.com/Codeon-GmbH/mulle-clang/archive/6.0.0.3.tar.gz"
-  sha256 "48a96e7ea2756fe5cc716c3f29d08465a982d15c142d31d80fde0bc855771661"
+  url "https://github.com/Codeon-GmbH/mulle-clang/archive/6.0.0.4.tar.gz"
+  sha256 "89d8e93d3a8866d297f7ae7ee17d0d3fc1b03e204e3fc3db78644a52364e0bfc"
 
 
   def vendor
-    "mulle-clang 6.0.0.3 (runtime-load-version: 12)"
+    "mulle-clang 6.0.0.4 (runtime-load-version: 12)"
   end
 
 #
@@ -26,14 +26,17 @@ class MulleClang < Formula
 #    `brew install --build-bottle --build-from-source mulle-clang.rb`
 #    `brew bottle --force-core-tap mulle-clang.rb`
 #
-# Does not work anymore, since bottle --build-from-source is gone :(
-
+#     scp -i ~/.ssh/id_rsa_hetzner_pw \
+#            ./mulle-clang-6.0.0.4.high_sierra.bottle.tar.gz \
+#            codeon@www262.your-server.de:public_html/_site/bottles/
+#
   bottle do
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
     root_url "http://download.codeon.de/bottles"
 
-    sha256 "65770792ea72f17dc920bad956be7c512375a0c373baa4054fa471132a7e331d" => :high_sierra
-    sha256 "6a5835ab67c8cdd36b0b05cb65380e65205ed9793370e8d3f9b29c15bbbda3c2" => :sierra
+    sha256 "805e0ac714b4118c22e8330e5ab4436e514e9d4f6150622e217344f802429c8d" => :high_sierra
+    sha256 "8313ee89f595681a4fcb7f2bd099dea5085fb51ceb3141499120fc78852e2f12" => :sierra
+
     cellar :any
   end
 
