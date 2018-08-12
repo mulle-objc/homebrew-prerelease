@@ -34,17 +34,23 @@ class MulleLldb < Formula
   homepage "https://codeon-gmbh/mulle-lldb/"
 
   def vendor
-    "mulle-clang 6.0.0.4 (runtime-load-version: 12)"
+    "mulle-clang 6.0.0.6 (runtime-load-version: 12)"
   end
 
   stable do
-    version "6.0.0.1"
+    version "6.0.0.3"
+
     url "https://releases.llvm.org/6.0.0/llvm-6.0.0.src.tar.xz"
     sha256 "1ff53c915b4e761ef400b803f07261ade637b0c269d99569f18040f3dcee4408"
 
+    resource "lldb" do
+      url "https://github.com/Codeon-GmbH/mulle-lldb/archive/6.0.0.3.tar.gz"
+      sha256 "b6f40db5d5f861b5d3b34fdedfcda909aba213a9966b5a5b404c52aba5a0998e"
+    end
+
     resource "clang" do
-      url "https://github.com/Codeon-GmbH/mulle-clang/archive/6.0.0.4.tar.gz"
-      sha256 "89d8e93d3a8866d297f7ae7ee17d0d3fc1b03e204e3fc3db78644a52364e0bfc"
+      url "https://github.com/Codeon-GmbH/mulle-clang/archive/6.0.0.6.tar.gz"
+      sha256 "38c72bec447e1bf9b224ebf499d1f62a9f7ed84c3bb55e6a98d2ca78136eb2f1"
     end
 
 #    resource "clang-extra-tools" do
@@ -74,11 +80,6 @@ class MulleLldb < Formula
 #      sha256 "6b8c4a833cf30230c0213d78dbac01af21387b298225de90ab56032ca79c0e0b"
 #    end
 
-    resource "lldb" do
-      url "https://github.com/Codeon-GmbH/mulle-lldb/archive/6.0.0.1.tar.gz"
-      sha256 "9ba4a6364d466896268839b202c4abd15d9d8ee7f7f95dab141f8c884d88339c"
-    end
-
 #    resource "openmp" do
 #      url "https://releases.llvm.org/6.0.0/openmp-6.0.0.src.tar.xz"
 #      sha256 "7c0e050d5f7da3b057579fb3ea79ed7dc657c765011b402eb5bbe5663a7c38fc"
@@ -93,7 +94,8 @@ class MulleLldb < Formula
   bottle do
     cellar :any
 
-    sha256 "74a78381d5d9488c264cf96059ded41c1b1d699e639102bc2374c80d0f233557" => :high_sierra
+    sha256 "f20fbb482abedefc9ed4caf6ddb1732a79ad0bfc84ad41b78e25cce024eb73b7" => :high_sierra
+
   end
 
   head do
