@@ -94,6 +94,8 @@ class MulleLldb < Formula
   bottle do
     cellar :any
 
+    root_url "http://download.codeon.de/bottles"
+
     sha256 "f20fbb482abedefc9ed4caf6ddb1732a79ad0bfc84ad41b78e25cce024eb73b7" => :high_sierra
 
   end
