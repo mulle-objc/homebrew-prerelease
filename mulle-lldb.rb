@@ -22,35 +22,43 @@ end
 #    For each OS X version, create bottles with:
 #
 #    `brew uninstall codeon-gmbh/software/mulle-lldb`
-#    `brew install --build-bottle --build-from-source mulle-lldb.rb`
+#    `brew install --build-bottle mulle-lldb.rb`
 #    `brew bottle --force-core-tap mulle-lldb.rb`
 #
 #     scp -i ~/.ssh/id_rsa_hetzner_pw \
-#            ./mulle-lldb-6.0.0.1.high_sierra.bottle.tar.gz \
-#            codeon@www262.your-server.de:public_html/_site/bottles/
+#            ./mulle-lldb--8.0.0.high_sierra.bottle.tar.gz \
+#            codeon@www262.your-server.de:public_html/_site/bottles/mulle-lldb-8.0.0.high_sierra.bottle.tar.gz
 #
 class MulleLldb < Formula
   desc "Debugger for mulle-objc"
   homepage "https://codeon-gmbh/mulle-lldb/"
 
+  # doesn't work because my ruby is too bad
+  # TODO: fix formula version being 8.0.0 and not 8.0.0.0
+  def llvm_version
+      "8.0.0"
+  end
+  def mulle_version
+      "8.0.0.0"
+  end
   def vendor
-    "mulle-clang 6.0.0.6 (runtime-load-version: 12)"
+    "mulle-clang 8.0.0.0 (runtime-load-version: 15)"
   end
 
   stable do
-    version "6.0.0.3"
+    version "8.0.0"
 
-    url "https://releases.llvm.org/6.0.0/llvm-6.0.0.src.tar.xz"
-    sha256 "1ff53c915b4e761ef400b803f07261ade637b0c269d99569f18040f3dcee4408"
+    url "https://releases.llvm.org/8.0.0/llvm-8.0.0.src.tar.xz"
+    sha256 "8872be1b12c61450cacc82b3d153eab02be2546ef34fa3580ed14137bb26224c"
 
     resource "lldb" do
-      url "https://github.com/Codeon-GmbH/mulle-lldb/archive/6.0.0.3.tar.gz"
-      sha256 "b6f40db5d5f861b5d3b34fdedfcda909aba213a9966b5a5b404c52aba5a0998e"
+      url "https://github.com/Codeon-GmbH/mulle-lldb/archive/8.0.0.0.tar.gz"
+      sha256 "b6af6d2fff308354cd74a1b963c826be961a34e3387d4043f85a4034420e8833"
     end
 
     resource "clang" do
-      url "https://github.com/Codeon-GmbH/mulle-clang/archive/6.0.0.6.tar.gz"
-      sha256 "38c72bec447e1bf9b224ebf499d1f62a9f7ed84c3bb55e6a98d2ca78136eb2f1"
+      url "https://github.com/Codeon-GmbH/mulle-clang/archive/8.0.0.0.tar.gz"
+      sha256 "a3335f550473a3b7654f75a16e5af98e2161bb5ca49ce89320aa27af3114b293"
     end
 
 #    resource "clang-extra-tools" do
@@ -66,8 +74,8 @@ class MulleLldb < Formula
     # Only required to build & run Compiler-RT tests on macOS, optional otherwise.
     # https://clang.llvm.org/get_started.html
     resource "libcxx" do
-      url "https://releases.llvm.org/6.0.0/libcxx-6.0.0.src.tar.xz"
-      sha256 "70931a87bde9d358af6cb7869e7535ec6b015f7e6df64def6d2ecdd954040dd9"
+      url "https://releases.llvm.org/8.0.0/libcxx-8.0.0.src.tar.xz"
+      sha256 "c2902675e7c84324fb2c1e45489220f250ede016cc3117186785d9dc291f9de2"
     end
 
 #    resource "libunwind" do
@@ -96,7 +104,7 @@ class MulleLldb < Formula
 
     root_url "http://download.codeon.de/bottles"
 
-    sha256 "f20fbb482abedefc9ed4caf6ddb1732a79ad0bfc84ad41b78e25cce024eb73b7" => :high_sierra
+    sha256 "a43c588736c68ae9858f3fce7aef6e88fd65e1611dc334740bf5b4645e43368e" => :high_sierra
 
   end
 
@@ -146,7 +154,7 @@ class MulleLldb < Formula
   option "without-libcxx", "Do not build libc++ standard library"
 #  option "with-toolchain", "Build with Toolchain to facilitate overriding system compiler"
   option "with-lldb", "Build LLDB debugger"
-  option "with-python@2", "Build bindings against Homebrew's Python 2"
+#  option "with-python@2", "Build bindings against Homebrew's Python 2"
   option "with-shared-libs", "Build shared instead of static libraries"
   option "without-libffi", "Do not use libffi to call external functions"
 #  option "with-polly-gpgpu", "Enable Polly GPGPU"
@@ -281,6 +289,8 @@ class MulleLldb < Formula
       args << "-DLLDB_RELOCATABLE_PYTHON=ON"
       args << "-DPYTHON_LIBRARY=#{pylib}"
       args << "-DPYTHON_INCLUDE_DIR=#{pyinclude}"
+    else
+      args << "-DLLDB_DISABLE_PYTHON=ON"
     end
 
     if build.with? "libffi"
@@ -323,7 +333,7 @@ class MulleLldb < Formula
     system "install", "-m", "0555", "#{prefix}/root/bin/debugserver", "#{prefix}/bin/mulle-debugserver"
 
     system "mkdir", "#{prefix}/lib"
-    system "install", "-m", "0444", "#{prefix}/root/lib/liblldb.6.0.0.dylib", "#{prefix}/lib/liblldb.6.0.0.dylib"
+    system "install", "-m", "0444", "#{prefix}/root/lib/liblldb.8.0.0.dylib", "#{prefix}/lib/liblldb.8.0.0.dylib"
     # some voodoo copies
     system "install", "-m", "0444", "#{prefix}/root/lib/libclang.dylib", "#{prefix}/lib/libclang.dylib"
     # system "cp", "-Ra", "#{prefix}/root/lib/python2.7", "#{prefix}/lib/"

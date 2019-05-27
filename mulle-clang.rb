@@ -6,16 +6,16 @@ class MulleClang < Formula
 #
 #    1. Create a release on github
 #    2. Download the tar.gz file from github like so
-#       `curl -O -L "https://github.com/Codeon-GmbH/mulle-clang/archive/7.0.0.0.tar.gz"`
-#    3. Run shasum over it `shasum -a 256 -b 7.0.0.0.tar.gz`
+#       `curl -O -L "https://github.com/Codeon-GmbH/mulle-clang/archive/8.0.0.0.tar.gz"`
+#    3. Run shasum over it `shasum -a 256 -b 8.0.0.0.tar.gz`
 #    4. Remove bottle urls
 #
-  url "https://github.com/Codeon-GmbH/mulle-clang/archive/7.0.0.0.tar.gz"
-  sha256 "b402c790e48095191c5159a9dcc1890b793e62abf03b8563852027c1d951f638"
+  url "https://github.com/Codeon-GmbH/mulle-clang/archive/8.0.0.0.tar.gz"
+  sha256 "a3335f550473a3b7654f75a16e5af98e2161bb5ca49ce89320aa27af3114b293"
 
 
   def vendor
-    "mulle-clang 7.0.0.0 (runtime-load-version: 14)"
+    "mulle-clang 8.0.0.0 (runtime-load-version: 15)"
   end
 
 #
@@ -23,19 +23,21 @@ class MulleClang < Formula
 #    For each OS X version, create bottles with:
 #
 #    `brew uninstall codeon-gmbh/software/mulle-clang`
-#    `brew install --build-bottle --build-from-source mulle-clang.rb`
+#    `brew install --build-bottle mulle-clang.rb`
 #    `brew bottle --force-core-tap mulle-clang.rb`
+#    `mv ./mulle-clang--8.0.0.0.mojave.bottle.tar.gz  ./mulle-clang-8.0.0.0.mojave.bottle.tar.gz`
 #
 #     scp -i ~/.ssh/id_rsa_hetzner_pw \
-#            ./mulle-clang-6.0.0.4.high_sierra.bottle.tar.gz \
+#            ./mulle-clang-8.0.0.0.mojave.bottle.tar.gz \
 #            codeon@www262.your-server.de:public_html/_site/bottles/
 #
   bottle do
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
     root_url "http://download.codeon.de/bottles"
 
-       sha256 "5e5ada04a69ff49a2311d2fac9d3856c2e63b2b1712c1ed4e684c1e083198cdc" => :mojave
-       sha256 "0f111c4eb324aa9fc3fdad7b2b530e0cca8a29186bfb2e53a948170fffa8aa3a" => :high_sierra
+    sha256 "b6658d5852ef6b6506d705693060f82e746e91debf00773efe9f0c9da548dcf7" => :mojave
+    sha256 "f8984f4c664c1b70a36b6f0cd90dc832f5e7dd7a3238e541273c78c517bbef99" => :high_sierra
+#       sha256 "0f111c4eb324aa9fc3fdad7b2b530e0cca8a29186bfb2e53a948170fffa8aa3a" => :high_sierra
     cellar :any
   end
 
@@ -43,7 +45,7 @@ class MulleClang < Formula
 # MEMO:
 #    Change llvm to proper version
 #
-  depends_on 'llvm@7'  => :build
+  depends_on 'llvm@8'  => :build
   depends_on 'cmake'   => :build
   depends_on 'ninja'   => :build
 
