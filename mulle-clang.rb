@@ -11,7 +11,7 @@ class MulleClang < Formula
 #    4. Remove bottle urls
 #
   url "https://github.com/Codeon-GmbH/mulle-clang/archive/9.0.0.0.tar.gz"
-  sha256 "a56df44563488bc5eebf02a1d9579b61ac96e14d481ec4451e02a7cfd0ad37cc"
+  sha256 "19476ea50fbf388af3477f3c87bead585e0223826346eefc2ab091378f0f047b"
 
 
   def vendor
@@ -36,8 +36,7 @@ class MulleClang < Formula
     root_url "http://download.codeon.de/bottles"
 
     sha256 "5a1af13918c362b8a819ff9c2e527b32db5a8265b66fae2f510b24765595e261" => :mojave
-#    sha256 "f8984f4c664c1b70a36b6f0cd90dc832f5e7dd7a3238e541273c78c517bbef99" => :high_sierra
-#       sha256 "0f111c4eb324aa9fc3fdad7b2b530e0cca8a29186bfb2e53a948170fffa8aa3a" => :high_sierra
+    sha256 "32a171acde8346b22bccf84217524ee36b9046a6477c75f0fcb9e5666d68d8f1" => :high_sierra
     cellar :any
   end
 
