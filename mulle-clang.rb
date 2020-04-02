@@ -3,19 +3,18 @@ class MulleClang < Formula
   desc "Objective-C compiler for the mulle-objc runtime"
 #
 # MEMO:
-#    0. Replace 9.0.0.0 with x.0.0.0 your version number (and check vendor)
+#    0. Replace 10.0.0.2 with x.0.0.0 your version number (and check vendor)
 #    1. Create a release on github
 #    2. Download the tar.gz file from github like so
-#       `curl -O -L "https://github.com/Codeon-GmbH/mulle-clang/archive/9.0.0.0.tar.gz"`
-#    3. Run shasum over it `shasum -a 256 -b 9.0.0.0.tar.gz`
+#       `curl -O -L "https://github.com/Codeon-GmbH/mulle-clang/archive/10.0.0.2.tar.gz"`
+#    3. Run shasum over it `shasum -a 256 -b 10.0.0.2.tar.gz`
 #    4. Remove bottle urls
 #
-  url "https://github.com/Codeon-GmbH/mulle-clang/archive/9.0.0.0.tar.gz"
-  sha256 "19476ea50fbf388af3477f3c87bead585e0223826346eefc2ab091378f0f047b"
-
+  url "https://github.com/Codeon-GmbH/mulle-clang/archive/10.0.0.2.tar.gz"
+  sha256 "4ae64315e6df4ecb8d2eacc19807d1d9277b1c68b5773f9b89e72cd2b2603784"
 
   def vendor
-    "mulle-clang 9.0.0.0 (runtime-load-version: 16)"
+    "mulle-clang 10.0.0.2 (runtime-load-version: 16)"
   end
 
 #
@@ -25,18 +24,18 @@ class MulleClang < Formula
 #    `brew uninstall codeon-gmbh/software/mulle-clang`
 #    `brew install --build-bottle mulle-clang.rb`
 #    `brew bottle --force-core-tap mulle-clang.rb`
-#    `mv ./mulle-clang--9.0.0.0.mojave.bottle.tar.gz  ./mulle-clang-9.0.0.0.mojave.bottle.tar.gz`
+#    `mv ./mulle-clang--10.0.0.2.mojave.bottle.tar.gz  ./mulle-clang-10.0.0.2.mojave.bottle.tar.gz`
 #
 #     scp -i ~/.ssh/id_rsa_hetzner_pw \
-#            ./mulle-clang-9.0.0.0.mojave.bottle.tar.gz \
+#            ./mulle-clang-10.0.0.2.mojave.bottle.tar.gz \
 #            codeon@www262.your-server.de:public_html/_site/bottles/
 #
   bottle do
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
     root_url "http://download.codeon.de/bottles"
 
-    sha256 "5a1af13918c362b8a819ff9c2e527b32db5a8265b66fae2f510b24765595e261" => :mojave
-    sha256 "32a171acde8346b22bccf84217524ee36b9046a6477c75f0fcb9e5666d68d8f1" => :high_sierra
+    sha256 "ff7f48f06ac79be33c5096cfc422233fcbcd60299c7bfb0654e51b86afa666e6" => :mojave
+    sha256 "231d115ae20703ef2a4025c0603e7c0629f8c9bcdb0515cefa09ded202483963" => :high_sierra
     cellar :any
   end
 
@@ -78,7 +77,7 @@ class MulleClang < Formula
 
   def install
       mkdir "build" do
-         system "../bin/install-mulle-clang","--prefix","#{prefix}/root","--no-lldb"
+         system "../bin/install-mulle-clang","--prefix","#{prefix}/root","--no-lldb","--no-compiler-rt"
       end
 
       bin.install_symlink "#{prefix}/root/bin/clang" => "mulle-clang"
