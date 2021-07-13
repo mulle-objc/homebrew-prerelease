@@ -40,6 +40,7 @@ class MulleClangProject < Formula
     root_url "https://github.com/Codeon-GmbH/mulle-clang-project/releases/download/12.0.0.0-RC2"
 
     sha256 cellar: :any, catalina: "279ae722f43d39c2cd4600caec7a0f335565e0e226b43b7dcd8d98a3b249a965"
+    sha256 cellar: :any, big_sur: "4fe2ce52f47f43fdea7d9e4939464c0677c0dd893c6a13c8afc4d3304427d381"
   end
 
 #
