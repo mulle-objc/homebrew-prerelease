@@ -1,3 +1,3 @@
 # homebrew-prerelease
 
-This for Travis test. Don't use it.
+This is for github integrations during the release procedure. Don't use it.
