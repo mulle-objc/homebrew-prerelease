@@ -46,8 +46,6 @@ class MulleClangProject < Formula
     sha256 cellar: :any, big_sur: "7c8f58cff1792c13593367802630ef95b3e02ca0d168ee4265faeae92cd8a954"
   end
 
-  end
-
 #
 # MEMO:
 #    Change llvm to proper version
