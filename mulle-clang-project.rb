@@ -40,7 +40,9 @@ class MulleClangProject < Formula
 #
   bottle do
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
-    root_url "https://www.mulle-kybernetik.com/bottles"
+#   root_url "https://www.mulle-kybernetik.com/bottles"
+
+    root_url "https://github.com/mulle-cc/mulle-clang-project/releases/download/13.0.0.1"
     
     sha256 cellar: :any, monterey: "c3300434db641313fff2f43f06c092695b67d653815d2996450fd277b5d56093"
     sha256 cellar: :any, big_sur: "7c8f58cff1792c13593367802630ef95b3e02ca0d168ee4265faeae92cd8a954"
