@@ -1,0 +1,17 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - name: Install Formulas
+      run: |
+        brew tap mulle-objc/software || exit 1
+        IFS=$'\n'
+        set -f
+        for formula in `brew tap-info mulle-objc/software --json | jq -r '.[]|(.formula_names[],.cask_tokens[])'`
+        do
+           brew install "${formula}" || exit 1
+        done
