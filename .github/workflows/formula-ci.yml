@@ -8,7 +8,7 @@ jobs:
     steps:
     - name: Install Formulas
       run: |
-        brew tap mulle-objc/software || exit 1
+        brew tap mulle-objc/prerelease || exit 1
         IFS=$'\n'
         set -f
         for formula in `brew tap-info mulle-objc/prerelease --json | jq -r '.[]|(.formula_names[],.cask_tokens[])'`
