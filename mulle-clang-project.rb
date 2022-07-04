@@ -2,24 +2,24 @@ class MulleClangProject < Formula
   desc "Objective-C compiler for the mulle-objc runtime"
   homepage "https://github.com/mulle-cc/mulle-clang-project"
   license "BSD-3-Clause"
-  version "13.0.0.1"
+  version "14.0.6.0"
 #  revision 1
-  head "https://github.com/mulle-cc/mulle-clang-project.git", branch: "mulle/13.0.0"
+  head "https://github.com/mulle-cc/mulle-clang-project.git", branch: "mulle/14.0.6"
 
 #
 # MEMO:
-#    0. Replace 13.0.0.1 with x.0.0.0 your version number (and check vendor)
+#    0. Replace 14.0.6.0 with x.0.0.0 your version number (and check vendor)
 #    1. Create a release on github
 #    2. Download the tar.gz file from github like so
-#       `curl -O -L "https://github.com/mulle-cc/mulle-clang-project/archive/13.0.0.1.tar.gz"`
+#       `curl -O -L "https://github.com/mulle-cc/mulle-clang-project/archive/14.0.6.0.tar.gz"`
 #    3. Run shasum over it `shasum -a 256 -b 13.0.0.i1.tar.gz`
 #    4. Remove bottle urls
 #
-  url "https://github.com/mulle-cc/mulle-clang-project/archive/refs/tags/13.0.0.1.tar.gz"
-  sha256 "578fa7ccf0d4769ffb0edf46e1a700e233e3e37ed133af88afb153b400e8edc1"
+  url "https://github.com/mulle-cc/mulle-clang-project/archive/refs/tags/14.0.6.0-RC1.tar.gz"
+  sha256 "739aedeac4448027345be4514e44141859aa2c04a27addcdb5600c7626b728a1"
 
   def vendor
-    "mulle-clang 13.0.0.1 (runtime-load-version: 17)"
+    "mulle-clang 14.0.6.0 (runtime-load-version: 17)"
   end
 
 #
@@ -32,20 +32,20 @@ class MulleClangProject < Formula
 #    `brew tap-new mulle-objc/software`
 #    `cp mulle-clang-project.rb /usr/local/Homebrew/Library/Taps/mulle-objc/homebrew-software/Formula/`
 #    `brew bottle mulle-objc/software/mulle-clang-project`
-#    `mv ./mulle-clang--13.0.0.1.monterey.bottle.tar.gz  ./mulle-clang-project-13.0.0.1.monterey.bottle.tar.gz`
+#    `mv ./mulle-clang--14.0.6.0.monterey.bottle.tar.gz  ./mulle-clang-project-14.0.6.0.monterey.bottle.tar.gz`
 #
 #     scp -i ~/.ssh/id_rsa_hetzner_pw \
-#            ./mulle-clang-13.0.0.1.monterey.bottle.tar.gz \
+#            ./mulle-clang-14.0.6.0.monterey.bottle.tar.gz \
 #            codeon@www262.your-server.de:public_html/_site/bottles/
 #
   bottle do
 #    "#{root_url}/#{name}-#{version}.#{tag}.bottle.#{revision}.tar.gz"
 #   root_url "https://www.mulle-kybernetik.com/bottles"
 
-    root_url "https://github.com/mulle-cc/mulle-clang-project/releases/download/13.0.0.1"
-    
-    sha256 cellar: :any, monterey: "c3300434db641313fff2f43f06c092695b67d653815d2996450fd277b5d56093"
-    sha256 cellar: :any, big_sur: "7c8f58cff1792c13593367802630ef95b3e02ca0d168ee4265faeae92cd8a954"
+    root_url "https://github.com/mulle-cc/mulle-clang-project/releases/download/14.0.6.0-RC1"
+ 
+    sha256 cellar: :any, big_sur: "6514b78da5bd973082834d0fc569f077c321a108c383b9ccd557e5b86054d564"
+    sha256 cellar: :any, monterey: "acf57b3fce689bd37c12a7467cb99a6414ef9780b697695a05996df289637965"
   end
 
 #
